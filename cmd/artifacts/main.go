@@ -14,15 +14,16 @@ import (
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 
-	gen2 "github.com/hyperledger-labs/fabric-smart-client/integration/nwo/cmd/artifactgen/gen"
-	version2 "github.com/hyperledger-labs/fabric-smart-client/integration/nwo/cmd/artifactgen/version"
+	gen2 "github.com/hyperledger-labs/fabric-smart-client/integration/nwo/cmd/artifacts/gen"
+	"github.com/hyperledger-labs/fabric-smart-client/integration/nwo/cmd/artifacts/start"
+	version2 "github.com/hyperledger-labs/fabric-smart-client/integration/nwo/cmd/artifacts/version"
 )
 
 const CmdRoot = "core"
 
 // The main command describes the service and
 // defaults to printing the help message.
-var mainCmd = &cobra.Command{Use: "artifactgen"}
+var mainCmd = &cobra.Command{Use: "artifacts"}
 
 func main() {
 	// For environment variables.
@@ -40,6 +41,7 @@ func main() {
 	mainFlags.MarkHidden("logging-level")
 
 	mainCmd.AddCommand(gen2.Cmd())
+	mainCmd.AddCommand(start.Cmd())
 	mainCmd.AddCommand(version2.Cmd())
 
 	// On failure Cobra prints the usage message and error string, so we only

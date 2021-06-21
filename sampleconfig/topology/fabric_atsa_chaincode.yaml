@@ -108,7 +108,7 @@ topologies:
   chaincodemode: net
   nodeous: true
 - name: fsc
-  peers:
+  nodes:
   - NodeSynthesizer:
       Aliases:
         github.com/hyperledger-labs/fabric-smart-client/integration/fabric/atsa/chaincode/views:

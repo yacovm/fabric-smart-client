@@ -20,6 +20,7 @@ require (
 	github.com/btcsuite/btcd v0.21.0-beta // indirect
 	github.com/dgraph-io/badger/v3 v3.2011.1
 	github.com/fsouza/go-dockerclient v1.6.1
+	github.com/ghodss/yaml v1.0.0
 	github.com/gogo/protobuf v1.3.1
 	github.com/golang/protobuf v1.4.3
 	github.com/golang/snappy v0.0.3-0.20201103224600-674baa8c7fc3 // indirect

@@ -50,7 +50,7 @@ type PlatformFactory interface {
 }
 
 type Infrastructure struct {
-	testDir           string
+	artifactsDir      string
 	registry          *registry2.Registry
 	nwo               *nwo.NWO
 	buildServer       *common.BuildServer
@@ -96,7 +96,7 @@ func New(startPort int, path string, topologies ...nwo.Topology) (*Infrastructur
 	reg.Builder = builder
 
 	n := &Infrastructure{
-		testDir:           testDir,
+		artifactsDir:      testDir,
 		registry:          reg,
 		buildServer:       buildServer,
 		deleteOnStop:      true,
@@ -137,6 +137,7 @@ func (i *Infrastructure) RegisterPlatformFactory(factory PlatformFactory) {
 }
 
 func (i *Infrastructure) Generate() {
+	i.storeTopologies()
 	i.initNWO()
 	i.nwo.Generate()
 }
@@ -159,7 +160,7 @@ func (i *Infrastructure) Stop() {
 	}
 	defer i.buildServer.Shutdown()
 	if i.deleteOnStop {
-		defer os.RemoveAll(i.testDir)
+		defer os.RemoveAll(i.artifactsDir)
 	}
 	i.nwo.Stop()
 }
@@ -233,6 +234,13 @@ func (i *Infrastructure) initNWO() {
 		i.registry.AddPlatform(platform.Name(), platform)
 	}
 	i.nwo = nwo.New(platforms...)
+}
+
+func (i *Infrastructure) storeTopologies() {
+	t := nwo.Topologies{Topologies: i.topologies}
+	raw, err := t.Export()
+	Expect(err).ToNot(HaveOccurred())
+	Expect(ioutil.WriteFile(filepath.Join(i.artifactsDir, "topologies.yaml"), raw, 0770)).ToNot(HaveOccurred())
 }
 
 func failMe(message string, callerSkip ...int) {

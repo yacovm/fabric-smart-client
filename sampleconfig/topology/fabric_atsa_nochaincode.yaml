@@ -123,7 +123,7 @@ topologies:
     - Org1_peer_0
   chaincodemode: net
 - name: fsc
-  peers:
+  nodes:
   - NodeSynthesizer:
       Aliases:
         github.com/hyperledger-labs/fabric-smart-client/integration/fabric/atsa/fsc/views:

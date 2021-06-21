@@ -14,7 +14,7 @@ import (
 )
 
 // Program name
-const ProgramName = "artifactsgen"
+const ProgramName = "artifacts"
 
 // Cmd returns the Cobra Command for Version
 func Cmd() *cobra.Command {
@@ -23,8 +23,8 @@ func Cmd() *cobra.Command {
 
 var cobraCommand = &cobra.Command{
 	Use:   "version",
-	Short: "Print artifactsgen version.",
-	Long:  `Print current version of artifactsgen.`,
+	Short: "Print artifacts version.",
+	Long:  `Print current version of artifacts.`,
 	RunE: func(cmd *cobra.Command, args []string) error {
 		if len(args) != 0 {
 			return fmt.Errorf("trailing args detected")

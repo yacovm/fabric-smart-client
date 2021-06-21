@@ -1,6 +1,6 @@
 topologies:
 - name: fsc
-  peers:
+  nodes:
   - name: initiator
     bootstrap: true
     executablePath: github.com/hyperledger-labs/fabric-smart-client/integration/fsc/pingpong/cmd/initiator

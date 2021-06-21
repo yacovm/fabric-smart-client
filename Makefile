@@ -74,9 +74,9 @@ clean:
 	rm -rf ./integration/fsc/pingpong/cmd/responder
 	rm -rf ./integration/fscnodes
 
-.PHONY: artifactsgen
-artifactsgen:
-	@go install github.com/hyperledger-labs/fabric-smart-client/cmd/artifactsgen
+.PHONY: artifacts
+artifacts:
+	@go install github.com/hyperledger-labs/fabric-smart-client/cmd/artifacts
 
 .PHONY: topologies
 topologies:

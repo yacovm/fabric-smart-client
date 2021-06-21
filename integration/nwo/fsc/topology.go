@@ -18,7 +18,7 @@ type Logging struct {
 
 type Topology struct {
 	TopologyName string       `yaml:"name,omitempty"`
-	Nodes        []*node.Node `yaml:"peers,omitempty"`
+	Nodes        []*node.Node `yaml:"nodes,omitempty"`
 	GRPCLogging  bool         `yaml:"grpcLogging,omitempty"`
 	Logging      *Logging     `yaml:"logging,omitempty"`
 }
